@@ -4,7 +4,7 @@ import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import RequireAuth from "../components/RequireAuth";
-import Register from "../components/Register";
+import Register from "../pages/Register";
 
 const router = createBrowserRouter([
     {
