@@ -5,6 +5,8 @@ import FormInput from "../components/FormInput";
 import FormError from "../components/utils/FormError";
 import { FirebaseErrors } from "../components/utils/FirebaseErrors";
 import { FormValidations } from "../components/utils/FormValidations";
+import Title from "../components/utils/Title";
+import DefaultButton from "../components/utils/DefaultButton";
 
 const Login = () => {
     const { loginUser } = useUserContext();
@@ -30,21 +32,23 @@ const Login = () => {
 
     return (
         <>
-            <h1>Login</h1>
+            <Title title="Iniciar sesión" />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FormInput
+                    error={errors.email}
                     type="email"
-                    placeholder="Ingrese email"
+                    label="Ingrese email"
                     {...register("email", {
                         required,
                         pattern: patternEmail,
                     })}
                 />
-                {errors.email && <FormError errors={errors.email.message} />}
+                <FormError errors={errors.email} />
 
                 <FormInput
+                    error={errors.password}
                     type="password"
-                    placeholder="Ingrese contraseña"
+                    label="Ingrese contraseña"
                     {...register("password", {
                         minLength: validateMinLength(6, "Mínimo 6 caracteres"),
                         validate: {
@@ -52,11 +56,10 @@ const Login = () => {
                         },
                     })}
                 />
-                {errors.password && (
-                    <FormError errors={errors.password.message} />
-                )}
 
-                <button type="submit">Login</button>
+                <FormError errors={errors.password} />
+
+                <DefaultButton buttonTitle="Iniciar sesión" type="submit" />
             </form>
         </>
     );
