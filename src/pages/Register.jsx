@@ -1,5 +1,5 @@
 import { useUserContext } from "../../context/UserContext";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FirebaseErrors } from "../components/utils/FirebaseErrors";
 import FormError from "../components/utils/FormError";
@@ -95,6 +95,15 @@ const Register = () => {
                     buttonStyle="purple"
                     type="submit"
                 />
+                <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    ¿Ya tienes cuenta?{" "}
+                    <NavLink
+                        to="/login"
+                        className="text-blue-600 hover:underline dark:text-blue-500"
+                    >
+                        Inicia sesión
+                    </NavLink>
+                </div>
             </form>
         </>
     );

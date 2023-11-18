@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
 import FormInput from "../components/FormInput";
@@ -18,7 +18,11 @@ const Login = () => {
         handleSubmit,
         setError,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            email: "evans@evans.com",
+            password: "1234567"
+    }});
     const onSubmit = async ({ email, password }) => {
         try {
             await loginUser(email, password);
@@ -60,6 +64,12 @@ const Login = () => {
                 <FormError errors={errors.password} />
 
                 <DefaultButton buttonTitle="Iniciar sesión" type="submit" />
+                <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    ¿Aún no tienes cuenta?{" "}
+                    <NavLink to="/register" className="text-blue-600 hover:underline dark:text-blue-500">
+                        Regístrate
+                    </NavLink>
+                </div>
             </form>
         </>
     );
