@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
 
@@ -13,7 +14,7 @@ const LayoutForm = () => {
                     <Outlet />
                 </div>
             </main>
-            <footer>footer</footer>
+            <Footer />
         </>
     );
 };

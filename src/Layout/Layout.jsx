@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useUserContext } from "../../context/UserContext";
+
 
 const Layout = () => {
     const { user } = useUserContext();
@@ -16,7 +18,7 @@ const Layout = () => {
             <main>
                 <Outlet />
             </main>
-            <footer>footer</footer>
+            <Footer/>
         </>
     );
 };
